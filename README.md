@@ -1,5 +1,7 @@
 # Aircraft Pilot Management
 
+**Updated 4 October 2026:** searchable selects, AJAX aviation forms/tables, recurring aircraft maintenance and automatic pilot recovery leave. Read [Upgrade and automation setup](docs/UPGRADE_AND_AUTOMATION.md) before updating an existing installation.
+
 An aviation operations module built into the provided Laravel 12 application. It replaces the home dashboard, login, and primary navigation with flight operations screens. Existing administrative records (staff, users, roles) remain available; the original parking and billing modules remain in the source for compatibility.
 
 The application now uses a shared operations navigation and visual design across aviation and legacy administration Blade pages, including staff, users, roles, parking and reports. Sign in, password recovery, confirmation codes and error pages share a responsive account layout. Printable reports and account emails use matching document styling. Existing form IDs, server routes and administration scripts are retained so legacy data entry continues to work.
@@ -17,7 +19,7 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-The uploaded `composer.lock` had unresolved merge-conflict markers and pinned an Excel package from the Laravel 4 era. It is excluded; the corrected `composer.json` selects Laravel Excel 3.1. Run `composer install` on your PHP host to generate a valid lock file, then keep that generated lock with the deployment. PHP extensions required by Laravel Excel include `zip`, `xml`, `gd`, `mbstring` and `fileinfo`.
+The included `composer.lock` fixes the dependency versions used for verification. Run `composer install` on your PHP host. PHP extensions required by Laravel Excel include `zip`, `xml`, `gd`, `mbstring` and `fileinfo`.
 
 Before `migrate --seed`, set `AVIATION_ADMIN_PASSWORD` and `AVIATION_MANAGER_PASSWORD` in `.env`. If either is left empty, the initial seed prints a random one-time password to the terminal; save it then. Default account names are `admin` and `hrmanager`. Never put production credentials in the ZIP. On an **existing** installation, back up the database and run `php artisan migrate` followed by `php artisan db:seed --class=AviationSeeder` (the original application seeder creates demo data and is intended only for an empty installation).
 
@@ -50,15 +52,12 @@ Permissions `aviation.view`, `aviation.manage`, `aviation.publish` and `aviation
 
 ## Verification
 
-This source archive passed PHP 8.3 syntax checks for 240 PHP files and `composer validate`. Laravel migrations, Blade compilation and feature tests could not run in the build environment because Composer could not reach its package repository. Before deploying, run the following on a development host with Composer access:
+The updated application passed 24 aviation regression tests (49 assertions), PHP syntax checks, Blade compilation, migrations/seeding, route and scheduler checks, and frontend DOM integration checks against a running Laravel application. See `docs/UPGRADE_AND_AUTOMATION.md` for the checked behaviours and deployment steps.
 
 ```bash
-php artisan migrate:fresh --seed
 php artisan route:list --path=aviation
 php artisan view:cache
-php artisan test --filter=AviationSchedulingTest
+php artisan test --filter=Aviation
 ```
 
 Never run `migrate:fresh` on a production database. The uploaded ZIP contained a duplicate personal access token migration and an early bill foreign key pointing at a later parking table; these were corrected for a fresh install. The original staff/users migration also referenced the wrong staff table name and is corrected here.
-#   a i r c r a f t  
- 

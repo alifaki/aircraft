@@ -1,0 +1,401 @@
+.sidebar-nav > #sidebarnav >.sidebar-item {
+    /*background-color: rgb(195, 88, 88);*/
+    border-color: #E5E5E5;
+    /*border-color: #569dc6;*/
+    border-style: solid;
+    border-width: 1px 0 0;
+    border-right: none;
+    padding: 0;
+}
+.left-sidebar {
+    background: #f8f9fa; /* Light background */
+    border-right: 1px solid #ddd;
+    padding: 0;
+}
+.sidebar-nav, .left-sidebar, .topbar {
+    background: #F8F8F8;
+}
+#sidebarnav{
+    border-right: none !important;
+}
+
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li > a {
+    border-top-color: #E4E4E4;
+    background-color: #FFF;
+    color: #616161;
+}
+
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li:first-child>a {
+    border-top-width: 0;
+}
+
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li > a {
+    display: block;
+    position: relative;
+    padding: 5px 0 5px 10px;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: dotted;
+}
+
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li{
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eef1f3;
+    border-bottom: none;
+    border-right: none;
+}
+.sidebar-nav > #sidebarnav >.sidebar-item > ul {
+    background: #f4f7f9;
+}
+.sidebar-nav > #sidebarnav >.sidebar-item > ul.in{
+    border-right: 2px solid #2B7DBC; /* Adjust color and width as needed */
+    background-color: #f8f9fa; /* Optional: Change background for open state */
+    position: relative; /* Ensure pseudo-elements position correctly */
+}
+/* Line indicator before the sub-menu items */
+.sidebar-nav > #sidebarnav > .sidebar-item > ul.collapse.in > li::before {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    border-style: dotted;
+    border-color: #7ebaf6; /* Change to your desired color */
+    border-width: 0 0 0 1px;
+    content: ''; /* Ensures the pseudo-element is rendered */
+}
+
+/* Sidebar icon dotted line */
+.sidebar-nav > #sidebarnav > .sidebar-item > ul.collapse.in > li > .sidebar-link::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 7px;
+    height: 1px;
+    border-style: dotted;
+    border-color: #7ebaf6; /* Change to your desired color */
+    border-width: 1px 0 0;
+}
+.sidebar-nav > #sidebarnav > .sidebar-item > .sidebar-link.no-arrow.active::after,
+.sidebar-nav > #sidebarnav > .sidebar-item > ul.collapse.in > li > .sidebar-link.active::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    height: 50%; /* Adjust to fit items of varying heights */
+    width: 5px;
+    background-color: #2B7DBC;
+    display: block;
+    transform: translateY(-50%);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+}
+#sidebarnav > .sidebar-item > .sidebar-link>span:hover::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%; /* Adjust to fit items of varying heights */
+    width: 3px;
+    background-color: #629CC9;
+    content: "";
+    display: block;
+}
+
+/* Ensure sidebar-item has position: relative */
+#sidebarnav .sidebar-item {
+    position: relative;
+}
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li > .sidebar-link:hover{
+    background-color: #e2eefa;
+    color: #2B7DBC;
+}
+.sidebar-nav > #sidebarnav >.sidebar-item > a.active{
+    border-right: 2px solid #2B7DBC; /* Adjust color and width as needed */
+    background-color: #f8f9fa; /* Optional: Change background for open state */
+    position: relative; /* Ensure pseudo-elements position correctly */
+}
+
+#sidebarnav {
+    background: #f8f9fa; /* Light background */
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+}
+
+.sidebar-item {
+    list-style: none;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background: #e0e0e0;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link {
+    margin: 0;
+}
+
+.sidebar-nav ul .sidebar-item .first-level .sidebar-item:last-child {
+    margin-bottom: 0;
+}
+.left-sidebar .scroll-sidebar {
+ padding: 0;
+}
+@media (min-width: 1300px) {
+    [data-layout=vertical] body[data-sidebartype=mini-sidebar] .left-sidebar .scroll-sidebar {
+        padding: 0;
+    }
+}
+.sidebar-nav > #sidebarnav >.sidebar-item > ul > li > a {
+    padding-left: 0;
+    color: rgb(97, 97, 97);
+}
+
+.sidebar-toggle {
+    background-color: #F3F3F3;
+    border-color: #E0E0E0;
+    bottom: 0;
+    position: fixed;
+}
+
+.sidebar-toggle {
+    text-align: center;
+    position: relative;
+    border-style: solid;
+    border-width: 0px 0px 1px;
+    padding: 3px 0px;
+}
+
+#sidebar-toggle-icon {
+    width: 20px; /* Adjust size */
+    height: 20px;
+    text-align: center;
+    border-radius: 50%; /* Makes it circular */
+    border: 1px solid #ccc; /* Border color */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background */
+    cursor: pointer;
+    font-size: 9px;
+}
+
+#sidebar-collapse::before {
+    content: "";
+    width: 160px;
+    height: 0.5px;
+    background-color: #dcd9d9; /* Line divider */
+    position: absolute;
+    z-index: -1;
+    top: 16px;
+    right: 55px;
+}
+.card{
+    border-radius: 0;
+}
+.card-header{
+    border-radius: 0;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 10px;
+    padding-left: 12px;
+    margin-bottom: 1px;
+}
+.card-header:first-child {
+    border-radius: 0;
+}
+.sidebar-nav .has-arrow::after {
+    top: 20px;
+}
+.auth-login-shape-box::before {
+    content: "";
+    position: absolute;
+    left: -100px;
+    top: -250px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #4b6ee9;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures alignment does not change */
+    padding-top: 4px; /* Creates space for label */
+}
+
+.input-label {
+    position: absolute;
+    top: 12px; /* Fixes label position */
+    left: 12px;
+    font-size: 14px;
+    color: #888;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background: #fdfdfd;
+    padding: 0 5px;
+    z-index: 1; /* Ensures label is above error messages */
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+    top: -5px; /* Ensures the label moves up properly */
+    font-size: 12px;
+    color: #0084D9;
+}
+
+.error-message {
+    font-size: 13px;
+    color: red;
+    margin-top: 3px;
+    display: block;
+    min-height: 14px; /* Ensures error space is reserved */
+}
+
+.topbar .navbar .navbar-nav .nav-item .nav-link, .brand-name, .search-text, .nav-icon-hover-bg, .navbar-toggler  {
+    color: #f8f9fa !important;
+}
+.topbar .navbar .navbar-nav.quick-links .nav-item:hover .nav-link, .brand-name, .search-text  {
+    color: #b5b8ba !important;
+}
+.brand-name {
+    font-family: "Tw Cen MT Condensed", cursive;
+    text-transform: uppercase;
+    font-size: 25px !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button.current {
+    color: #fff !important;
+    background-color: #0085DBFF !important;
+    border-color: #0074BAFF !important;
+}
+div.dt-container .dt-paging .dt-paging-button {
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid #E6ECF1FF !important;
+    margin: 0 3px;
+}
+div.dt-container .dt-paging .dt-paging-button:hover {
+    background: #0698f6 !important;
+}
+div.dt-container select.dt-input {
+    margin-right: 10px;
+}
+
+.table-tools a{
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 5px !important;
+}
+.text-red{
+    color: darkred;
+}
+
+.modal{
+    --bs-modal-header-padding: 7px 15px;
+}
+.detailed-info-table>tbody>tr>td{
+    padding: 5px !important;
+}
+.detailed-info-table>tbody>tr>td.detailed-cell-format{
+    width: 20%;
+}
+
+.btn-h {
+    height: 35px;
+}
+.printable-table{
+    font-size: 12px;
+    border: 1px solid #818181;
+    border-collapse: collapse;
+    width: 100%;
+}
+.printable-table th{
+    border: 1px solid #818181;
+    padding: 5px;
+    text-align: center;
+    background-color: #0085DBFF;
+    color: #FFF;
+}
+.printable-table td{
+    border: 1px solid #818181;
+    padding: 5px;
+}
+.small-padding-table th, .small-padding-table td{
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.small-padding-table th{
+    background-color: #0085DBFF;
+    color: #FFF;
+    padding: 5px;
+}
+.small-padding-table td{
+    padding: 5px;
+}
+/* Enhanced dropdown menu without arrow indicator, for better compatibility and appearance */
+.dropdown-menu {
+    border-radius: 6px !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18), 0 1.5px 4px rgba(0,0,0,0.10);
+    position: absolute;
+    z-index: 1050;
+    display: none;
+    min-width: 160px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+@media (min-width: 768px) {
+    .topbar .navbar .navbar-nav .dropdown-menu.content-dd {
+        width: 210px;
+    }
+}
+
+.dropdown-item {
+    padding: 8px 18px !important;
+    color: #222;
+    background: none;
+    border: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #f5f5f5;
+    color: #007bff;
+}
+
+/* Remove arrow indicators for all dropdown-menu placements */
+.dropdown-menu::before,
+.dropdown-menu::after {
+    display: none !important;
+    content: none !important;
+}
+.ser-profile{
+    border: solid 1px #000; border-radius: 50%; padding: 2px; display: inline-block;
+}
+.vText{
+	writing-mode: vertical-lr;
+	-ms-writing-mode: tb-rl;
+	transform: rotate(180deg);
+}

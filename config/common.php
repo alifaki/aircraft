@@ -1,0 +1,38 @@
+<?php
+return [
+    'positions' => [
+        'administrator',
+        'researcher',
+        'search_room',
+        'archivist',
+        'agent',
+        'administrator',
+        'assistant_professor',
+        'associate_professor',
+        'cashier',
+        'cleaner',
+        'clerk',
+        'coach',
+        'counselor',
+        'customer_care_agent',
+        'dean',
+        'director',
+        'driver',
+        'front_desk',
+        'head_of_department',
+        'instructor',
+        'it_support',
+        'lab_assistant',
+        'lecturer',
+        'librarian',
+        'maintenance',
+        'manager',
+        'managing_director',
+        'operational_director',
+        'other',
+        'registrar',
+        'security',
+        'software_developer',
+        'supervisor'
+    ]
+];

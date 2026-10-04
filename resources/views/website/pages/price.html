@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMI v4.0 - Complete School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #858796;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
+        }
+
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #224abe 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #224abe 100%);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-header {
+            background: white;
+            color: var(--dark);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            text-align: center;
+        }
+
+        .pricing-card {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+
+        .pricing-card .card-header {
+            border-radius: 10px 10px 0 0 !important;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: var(--secondary);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eaecf4;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            margin-right: 0.5rem;
+        }
+
+        .feature-list .included i {
+            color: var(--success);
+        }
+
+        .feature-list .not-included {
+            color: var(--secondary);
+        }
+
+        .feature-list .not-included i {
+            color: var(--secondary);
+        }
+
+        .btn-pricing {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.35rem;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fc;
+        }
+
+        .badge-popular {
+            background-color: var(--warning);
+            color: #000;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.35rem;
+            margin-left: 0.5rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaecf4;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .system-explanation {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card {
+            border-left: 4px solid var(--primary);
+            background: white;
+            border-radius: 0 10px 10px 0;
+            padding: 1.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #224abe 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .footer {
+            background: #2e3a59;
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stats-label {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <img src="#" width="30" height="30" class="d-inline-block align-top me-2" alt="">
+            SAMI v4.0
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pricing">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="#pricing" class="btn btn-light me-2">View Plans</a>
+                <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Transform Your School with SAMI v4.0</h1>
+                <p class="lead mb-4">The complete school management system designed for Tanzanian educational institutions. Streamline operations, enhance learning, and grow your institution.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#pricing" class="btn btn-warning btn-lg">Get Started Today</a>
+                    <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://via.placeholder.com/500x350" alt="SAMI Dashboard" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">150+</div>
+            <div class="stats-label">Schools Using SAMI</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">75,000+</div>
+            <div class="stats-label">Students Managed</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">98%</div>
+            <div class="stats-label">Customer Satisfaction</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">5</div>
+            <div class="stats-label">Years in Tanzania</div>
+        </div>
+    </div>
+</section>
+
+<!-- System Explanation -->
+<section class="container mb-5" id="features">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Why Choose SAMI v4.0?</h2>
+            <p class="lead">A comprehensive solution designed specifically for Tanzanian educational institutions</p>
+        </div>
+    </div>
+
+    <div class="system-explanation">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-cogs feature-icon"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h4>Complete School Management</h4>
+                        <p>From student admissions to graduation, manage all aspects of your institution in one integrated platform. Track academic progress, financial records, staff performance, and more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h4>Financial Management & Billing</h4>
+                        <p>Comprehensive financial tools including billing, payroll, expense tracking, and reconciliation. Generate financial reports compliant with Tanzanian regulations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-graduation-cap feature-icon"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h4>Academic & E-Learning Tools</h4>
+                        <p>Advanced academic management with e-learning capabilities, assessment tools, and progress tracking. Support both traditional and blended learning models.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-mobile-alt feature-icon"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h4>Mobile & Web Access</h4>
+                        <p>Access your school management system from anywhere with our responsive web interface and mobile applications for teachers, students, and parents.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="container mb-5" id="pricing">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Affordable Plans for Every Institution</h2>
+            <p class="lead">Choose the perfect plan for your needs with options for startups to large institutions</p>
+        </div>
+    </div>
+
+    <!-- Startup Plans -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Perfect for Startups & Small Academies</h3>
+        </div>
+
+        <!-- Starter Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card pricing-card h-100">
+                <div class="card-header bg-info text-white">
+                    <h3 class="fw-bold">Starter</h3>
+                    <p>For new schools & small academies</p>
+                    <div class="price">
+                        <span class="currency">TZS</span>50,000<span class="period">/month</span>
+                    </div>
+                    <div>or TZS 550,000/year</div>
+                </div>
+                <div class="card-body">
+                    <ul class="feature-list">
+                        <li class="included"><i class="fas fa-check"></i> Up to 50 students</li>
+                        <li class="included"><i class="fas fa-check"></i> Up to 5 staff members</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic Student Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Simple Attendance Tracking</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic Gradebook</li>
+                        <li class="included"><i class="fas fa-check"></i> Simple Billing & Invoicing</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Financial Records</li>
+                        <li class="not-included"><i class="fas fa-times"></i> E-Learning Module</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Payroll Management</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Advanced Reports</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Library/Hostel Management</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-info btn-pricing w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Growth Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card pricing-card h-100 border-primary">
+                <div class="card-header bg-primary text-white position-relative">
+                    <span class="badge-popular position-absolute top-0 start-50 translate-middle">BEST FOR STARTUPS</span>
+                    <h3 class="fw-bold">Growth</h3>
+                    <p>For growing schools & medium academies</p>
+                    <div class="price">
+                        <span class="currency">TZS</span>70,000<span class="period">/month</span>
+                    </div>
+                    <div>or TZS 750,000/year</div>
+                </div>
+                <div class="card-body">
+                    <ul class="feature-list">
+                        <li class="included"><i class="fas fa-check"></i> Up to 100 students</li>
+                        <li class="included"><i class="fas fa-check"></i> Up to 10 staff members</li>
+                        <li class="included"><i class="fas fa-check"></i> All Starter features</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced Student Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic Academic Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Assessment & Results</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced Billing</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic Financial Records</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic E-Learning Features</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Payroll Management</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Library/Hostel Management</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-primary btn-pricing w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Basic Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card pricing-card h-100">
+                <div class="card-header bg-light">
+                    <h3 class="fw-bold text-dark">Basic</h3>
+                    <p class="text-muted">For established small schools</p>
+                    <div class="price">
+                        <span class="currency">TZS</span>150,000<span class="period">/month</span>
+                    </div>
+                    <div class="text-muted">or TZS 1,600,000/year</div>
+                </div>
+                <div class="card-body">
+                    <ul class="feature-list">
+                        <li class="included"><i class="fas fa-check"></i> Up to 200 students</li>
+                        <li class="included"><i class="fas fa-check"></i> Up to 15 staff members</li>
+                        <li class="included"><i class="fas fa-check"></i> All Growth features</li>
+                        <li class="included"><i class="fas fa-check"></i> Complete Academic Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Subject Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Attendance Tracking</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced Bill Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic Reports</li>
+                        <li class="not-included"><i class="fas fa-times"></i> E-Learning Module</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Advanced Financial Records</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Payroll Management</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-outline-primary btn-pricing w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Established Institution Plans -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center mb-4">For Established Schools & Colleges</h3>
+        </div>
+
+        <!-- Standard Plan -->
+        <div class="col-lg-6 col-md-6 mb-4">
+            <div class="card pricing-card h-100 border-primary">
+                <div class="card-header bg-primary text-white position-relative">
+                    <span class="badge-popular position-absolute top-0 start-50 translate-middle">MOST POPULAR</span>
+                    <h3 class="fw-bold">Standard</h3>
+                    <p>For medium schools & colleges</p>
+                    <div class="price">
+                        <span class="currency">TZS</span>350,000<span class="period">/month</span>
+                    </div>
+                    <div>or TZS 3,700,000/year</div>
+                </div>
+                <div class="card-body">
+                    <ul class="feature-list">
+                        <li class="included"><i class="fas fa-check"></i> Up to 500 students</li>
+                        <li class="included"><i class="fas fa-check"></i> Up to 35 staff members</li>
+                        <li class="included"><i class="fas fa-check"></i> All Basic features</li>
+                        <li class="included"><i class="fas fa-check"></i> E-Learning Module</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced Academic Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Assessment & Results</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced Bill Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Financial Records</li>
+                        <li class="included"><i class="fas fa-check"></i> Payroll Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Item Banks & Examinations</li>
+                        <li class="included"><i class="fas fa-check"></i> Library Management</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-primary btn-pricing w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="col-lg-6 col-md-6 mb-4">
+            <div class="card pricing-card h-100">
+                <div class="card-header bg-warning">
+                    <h3 class="fw-bold">Premium</h3>
+                    <p>For large schools & universities</p>
+                    <div class="price">
+                        <span class="currency">TZS</span>650,000<span class="period">/month</span>
+                    </div>
+                    <div>or TZS 6,800,000/year</div>
+                </div>
+                <div class="card-body">
+                    <ul class="feature-list">
+                        <li class="included"><i class="fas fa-check"></i> Unlimited students</li>
+                        <li class="included"><i class="fas fa-check"></i> Unlimited staff members</li>
+                        <li class="included"><i class="fas fa-check"></i> All Standard features</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced E-Learning</li>
+                        <li class="included"><i class="fas fa-check"></i> Hostel Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Transport Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced System Configuration</li>
+                        <li class="included"><i class="fas fa-check"></i> Permission & Logs</li>
+                        <li class="included"><i class="fas fa-check"></i> SBI Followup</li>
+                        <li class="included"><i class="fas fa-check"></i> Website Management</li>
+                        <li class="included"><i class="fas fa-check"></i> Admission Management</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-warning btn-pricing w-100">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Price Comparison Chart -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="container mb-5" id="testimonials">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">What Our Customers Say</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"SAMI has transformed how we manage our school. The financial modules alone have saved us countless hours each month."</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Principal">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">John Mwambapa</h6>
+                        <small class="text-muted">Principal, St. Mary's Academy</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"The e-learning features allowed us to seamlessly transition to online classes during the pandemic. Our students didn't miss a beat."</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Teacher">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">Sarah Juma</h6>
+                        <small class="text-muted">Head Teacher, Bright Future School</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"As a startup academy, the Growth plan gave us all the tools we needed at an affordable price. Highly recommended for new schools!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Director">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">David Kimambo</h6>
+                        <small class="text-muted">Director, Excel Academy</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Transform Your School?</h2>
+        <p class="lead mb-4">Join 150+ schools in Tanzania using SAMI to streamline their operations</p>
+        <a href="#pricing" class="btn btn-light btn-lg me-3">View Plans</a>
+        <a href="#contact" class="btn btn-outline-light btn-lg">Schedule a Demo</a>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="container mb-5" id="faq">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            Can I switch between plans later?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, you can upgrade or downgrade your plan at any time. When upgrading, you'll be charged the prorated difference for the remainder of your billing cycle. When downgrading, the change will take effect at the start of your next billing cycle.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            Is there a setup fee?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No, there is no setup fee for any of our plans. We include initial setup and configuration as part of your subscription.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            What payment methods do you accept?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We accept various payment methods including bank transfers, mobile money (M-Pesa, Tigo Pesa, Airtel Money), and credit/debit cards.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                            Do you offer discounts for annual payments?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer approximately 10% discount when you pay annually instead of monthly. This discount is already reflected in the annual pricing shown.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="container mb-5" id="contact">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="lead">Have questions? Our team is here to help</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="system-explanation">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="school" class="form-label">School Name</label>
+                        <input type="text" class="form-control" id="school" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5>SAMI v4.0</h5>
+                <p>Complete School Management System designed for Tanzanian educational institutions.</p>
+                <div class="d-flex">
+                    <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#features" class="text-light text-decoration-none">Features</a></li>
+                    <li><a href="#pricing" class="text-light text-decoration-none">Pricing</a></li>
+                    <li><a href="#testimonials" class="text-light text-decoration-none">Testimonials</a></li>
+                    <li><a href="#faq" class="text-light text-decoration-none">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Contact Info</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Dar es Salaam, Tanzania</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2"></i> +255 123 456 789</li>
+                    <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@sami.co.tz</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <h5>Newsletter</h5>
+                <p>Subscribe to get updates on new features</p>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email">
+                    <button class="btn btn-primary" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-0">© 2023 SAMI v4.0. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-light text-decoration-none me-3">Privacy Policy</a>
+                <a href="#" class="text-light text-decoration-none">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Price Comparison Chart
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const priceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Starter', 'Growth', 'Basic', 'Standard', 'Premium'],
+            datasets: [
+                {
+                    label: 'Monthly Price (TZS)',
+                    data: [50000, 70000, 150000, 350000, 650000],
+                    backgroundColor: 'rgba(78, 115, 223, 0.7)',
+                    borderColor: 'rgba(78, 115, 223, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Annual Price (TZS)',
+                    data: [550000, 750000, 1600000, 3700000, 6800000],
+                    backgroundColor: 'rgba(28, 200, 138, 0.7)',
+                    borderColor: 'rgba(28, 200, 138, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Monthly vs Annual Pricing Comparison'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += new Intl.NumberFormat('en-TZ', { style: 'currency', currency: 'TZS' }).format(context.parsed.y);
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return new Intl.NumberFormat('en-TZ', { style: 'currency', currency: 'TZS', maximumFractionDigits: 0 }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

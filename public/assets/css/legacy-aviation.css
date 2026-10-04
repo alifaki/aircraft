@@ -1,0 +1,98 @@
+/* Legacy administration views inherit this shared operations design. */
+.legacy-operations{
+  --bs-primary:#087e83;--bs-link-color:#087e83;--bs-link-hover-color:#06666b;
+  background:#f5f7fb;color:#15243b;
+}
+.legacy-operations #main-wrapper.legacy-shell{display:flex;min-height:100vh;background:#f5f7fb;overflow:visible}
+.legacy-operations #main-wrapper>.left-sidebar.aviation-sidebar{
+  display:block;visibility:visible;transform:none;position:sticky;top:0;left:auto;
+  width:254px;min-width:254px;height:100vh;min-height:100vh;margin:0;
+  overflow-y:auto;overflow-x:hidden;padding:24px 15px;background:#0f1e32;
+  border:0;z-index:110;box-shadow:none;
+}
+.legacy-operations #main-wrapper>.page-wrapper.aviation-main{
+  position:relative;display:block;flex:1;min-width:0;margin:0!important;padding:0;
+  width:auto;min-height:100vh;background:#f5f7fb;
+}
+.legacy-operations .body-wrapper{display:flex;flex-direction:column;min-height:100vh;padding:0!important;margin:0}
+.legacy-operations .topbar.aviation-topbar{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;left:auto;right:auto;width:100%;height:72px;min-height:72px;background:#fff!important;color:#15243b!important;border-bottom:1px solid #e5ebf2;padding:0 34px;z-index:80;box-shadow:0 2px 14px rgba(20,42,65,.03)}
+.legacy-operations .container-fluid.aviation-content{width:100%;max-width:1480px;min-height:60vh;margin:0 auto;padding:28px 34px 64px}
+.legacy-page-heading{padding:0 2px 20px;margin-bottom:6px;border-bottom:1px solid #e5ebf2}
+.legacy-page-heading h1{font-size:28px;font-weight:800;letter-spacing:-.04em;color:#15243b;margin:0}
+.legacy-operations .breadcrumb{margin:5px 0 19px;padding:0;font-size:12px;background:transparent}
+.legacy-operations .breadcrumb a,.legacy-operations a:not(.av-link):not(.av-btn):not(.btn){color:#087e83}
+.legacy-operations .card{background:#fff;border:1px solid #e5ebf2!important;border-radius:17px!important;box-shadow:0 10px 35px rgba(30,49,76,.045);margin-bottom:20px;overflow:visible}
+.legacy-operations .card-header,.legacy-operations .card-header:first-child{
+  border-radius:16px 16px 0 0!important;background:#f8fafc!important;
+  border:0;border-bottom:1px solid #e5ebf2;color:#15243b!important;
+  padding:16px 21px!important;line-height:1.4;margin:0;
+}
+.legacy-operations .card-header h1,.legacy-operations .card-header h2,.legacy-operations .card-header h3,.legacy-operations .card-header h4,.legacy-operations .card-header h5,.legacy-operations .card-header h6{color:#15243b!important;font-weight:800;margin:0}
+.legacy-operations .card-body{padding:22px 23px}
+.legacy-operations .card.bg-primary,.legacy-operations .card.bg-success,.legacy-operations .card.bg-info,.legacy-operations .card.bg-warning{
+  border:0!important;border-radius:17px!important;color:#fff!important;
+  background:linear-gradient(135deg,#172b43,#087e83)!important;
+}
+.legacy-operations .card.bg-success{background:linear-gradient(135deg,#135c58,#168e71)!important}
+.legacy-operations .card.bg-info{background:linear-gradient(135deg,#174466,#29849c)!important}
+.legacy-operations .card.bg-warning{background:linear-gradient(135deg,#865b25,#d08d35)!important}
+.legacy-operations .btn{border-radius:9px;font-weight:700;padding:8px 14px;box-shadow:none;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.legacy-operations .btn:hover{transform:translateY(-1px)}
+.legacy-operations .btn-primary,.legacy-operations .btn-info{background:#087e83;border-color:#087e83;color:#fff}
+.legacy-operations .btn-primary:hover,.legacy-operations .btn-info:hover{background:#066a70;border-color:#066a70;color:#fff}
+.legacy-operations .btn-light{background:#eef4f6;border-color:#e2eaf0;color:#19344a}
+.legacy-operations .btn-success{background:#15826a;border-color:#15826a}
+.legacy-operations .btn-danger{background:#b54849;border-color:#b54849}
+.legacy-operations .form-control,.legacy-operations .form-select{
+  min-height:42px;border:1px solid #d8e2e9;border-radius:9px;background-color:#fff;color:#213449;
+}
+.legacy-operations textarea.form-control{min-height:92px}
+.legacy-operations .form-control:focus,.legacy-operations .form-select:focus{
+  border-color:#087e83;box-shadow:0 0 0 3px rgba(8,126,131,.14)
+}
+.legacy-operations .input-container{position:relative;padding-top:18px;margin-bottom:2px}
+.legacy-operations .input-container>.input-label,
+.legacy-operations .input-container>.input-field:focus+.input-label,
+.legacy-operations .input-container>.input-field:not(:placeholder-shown)+.input-label{
+  top:0;left:2px;position:absolute;background:transparent;color:#53677b;font-size:12px;font-weight:700;padding:0;
+  line-height:17px;pointer-events:none;max-width:100%;white-space:normal;
+}
+.legacy-operations .input-container>.input-label i{font-size:14px!important;color:#087e83!important}
+.legacy-operations .table-responsive{overflow-x:auto}
+.legacy-operations .table{--bs-table-bg:transparent;margin-bottom:0}
+.legacy-operations .table thead th,.legacy-operations table.dataTable thead th{
+  background:#f2f6f9!important;color:#51667b!important;font-weight:800;
+  border-bottom:1px solid #e5ebf2!important;padding:12px 14px!important;
+}
+.legacy-operations .table tbody td,.legacy-operations table.dataTable tbody td{
+  padding:13px 14px!important;vertical-align:middle;border-bottom:1px solid #edf1f5!important;
+}
+.legacy-operations .table tbody tr:hover{background:#f8fbfc}
+.legacy-operations .dt-container .dt-paging .dt-paging-button.current{
+  background:#087e83!important;color:#fff!important;border-color:#087e83!important;border-radius:8px
+}
+.legacy-operations .modal-content{border:1px solid #e5ebf2;border-radius:17px;box-shadow:0 25px 75px rgba(16,34,53,.17)}
+.legacy-operations .modal-header{border-bottom:1px solid #e5ebf2;background:#f8fafc;border-radius:17px 17px 0 0}
+.legacy-operations .alert{border-radius:11px;border-width:1px}
+.legacy-operations .badge{border-radius:20px}
+.legacy-operations .av-app-footer{padding:0 34px 26px;text-align:center;color:#718198;font-size:12px}
+.legacy-operations .av-brand,.legacy-operations .av-link{color:#dce6f0}
+.legacy-operations .av-brand:hover,.legacy-operations .av-link:hover{color:#fff}
+.legacy-operations .av-sidebar nav{display:block}
+@media(max-width:820px){
+  .legacy-operations #main-wrapper>.left-sidebar.aviation-sidebar{
+    position:fixed;left:-280px;top:0;transition:left .2s ease;width:254px;min-width:254px;
+  }
+  .legacy-operations #main-wrapper>.left-sidebar.aviation-sidebar.open{left:0}
+  .legacy-operations .topbar.aviation-topbar{padding:0 15px}
+  .legacy-operations .container-fluid.aviation-content{padding:22px 15px 50px}
+  .legacy-page-heading h1{font-size:24px}
+  .legacy-operations .card-body{padding:17px}
+}
+@media print{
+  .legacy-operations .aviation-sidebar,.legacy-operations .aviation-topbar,
+  .legacy-operations .legacy-page-heading,.legacy-operations .av-app-footer{display:none!important}
+  .legacy-operations #main-wrapper>.page-wrapper.aviation-main{width:100%!important}
+  .legacy-operations .container-fluid.aviation-content{max-width:none;padding:0}
+  .legacy-operations .card{box-shadow:none;break-inside:avoid}
+}

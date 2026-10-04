@@ -1,0 +1,17 @@
+/* Shared polish for the bundled public templates; content and forms remain their own. */
+body.operations-public{--school-primary:#173b52;--school-secondary:#087e83;--school-accent:#15826a;--school-gold:#cb8c34;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:#1d3044;background:#f7f9fc}
+.operations-public .top-bar,.operations-public .contract-header{background:linear-gradient(120deg,#10243b,#17636c)!important;color:#fff}
+.operations-public .custom-navbar,.operations-public .navbar{box-shadow:0 8px 25px rgba(23,48,74,.08)!important}
+.operations-public .banner-section{background:#fff}
+.operations-public .banner-company-name{color:#153c52;letter-spacing:-.025em;text-shadow:none}
+.operations-public .banner-company-slogan{color:#087e83;text-shadow:none}
+.operations-public .bill-check-card{background:linear-gradient(135deg,#10243b,#17636c)!important;border-radius:22px!important}
+.operations-public .card,.operations-public .contract-section{border:1px solid #e1e9f0;border-radius:16px!important;box-shadow:0 10px 32px rgba(28,53,79,.07)}
+.operations-public .card-header{border-radius:16px 16px 0 0!important}
+.operations-public .btn-primary,.operations-public .btn-success{background:#087e83;border-color:#087e83;border-radius:9px;font-weight:700}
+.operations-public .btn-primary:hover,.operations-public .btn-success:hover{background:#066b70;border-color:#066b70}
+.operations-public .form-control,.operations-public .form-select{border:1px solid #d9e3eb;border-radius:9px;min-height:43px}
+.operations-public .form-control:focus,.operations-public .form-select:focus{border-color:#087e83;box-shadow:0 0 0 3px rgba(8,126,131,.14)}
+.operations-public a:focus-visible,.operations-public button:focus-visible{outline:3px solid #30bbb1;outline-offset:2px}
+@media(max-width:767px){.operations-public .banner-company-name{font-size:1.25rem}.operations-public .card{margin-bottom:12px}}
+@media print{body.operations-public{background:#fff}.operations-public .card,.operations-public .contract-section{box-shadow:none}.operations-public .contract-header{background:#fff!important;color:#15243b!important}}

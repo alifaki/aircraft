@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a SAMI Reseller - Earn Commissions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #858796;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
+        }
+
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #224abe 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 3rem;
+        }
+
+        .commission-card {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+
+        .commission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+
+        .commission-card .card-header {
+            border-radius: 10px 10px 0 0 !important;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .commission-rate {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .tier-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eaecf4;
+        }
+
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefits-list i {
+            margin-right: 0.5rem;
+        }
+
+        .benefits-list .included i {
+            color: var(--success);
+        }
+
+        .btn-reseller {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.35rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaecf4;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .reseller-benefits {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .calculator-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card {
+            border-left: 4px solid var(--primary);
+            background: white;
+            border-radius: 0 10px 10px 0;
+            padding: 1.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #224abe 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stats-label {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .commission-structure {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+
+        .commission-structure th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+        }
+
+        .commission-structure td {
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .commission-structure tr:nth-child(even) {
+            background-color: #f8f9fc;
+        }
+
+        .badge-popular {
+            background-color: var(--warning);
+            color: #000;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.35rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <img src="#" width="30" height="30" class="d-inline-block align-top me-2" alt="">
+            SAMI Reseller Program
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#commission">Commission</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#calculator">Earnings Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Success Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="#apply" class="btn btn-light me-2">Become a Reseller</a>
+                <a href="#" class="btn btn-outline-light">Reseller Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Become a SAMI Reseller & Earn Generous Commissions</h1>
+                <p class="lead mb-4">Join our partner network and earn up to 30% recurring commissions by helping schools transform with SAMI v4.0.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#apply" class="btn btn-warning btn-lg">Apply Now</a>
+                    <a href="#commission" class="btn btn-outline-light btn-lg">View Commission Plans</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://via.placeholder.com/500x350" alt="Reseller Program" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">TZS 250M+</div>
+            <div class="stats-label">Paid to Resellers</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">120+</div>
+            <div class="stats-label">Active Resellers</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">15%</div>
+            <div class="stats-label">Average Commission Rate</div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="stats-number">95%</div>
+            <div class="stats-label">Renewal Rate</div>
+        </div>
+    </div>
+</section>
+
+<!-- Reseller Benefits -->
+<section class="container mb-5" id="benefits">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Why Become a SAMI Reseller?</h2>
+            <p class="lead">Join a profitable partnership with comprehensive support</p>
+        </div>
+    </div>
+
+    <div class="reseller-benefits">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-money-bill-wave feature-icon"></i>
+                    <h4>Lucrative Commissions</h4>
+                    <p>Earn up to 30% recurring commissions with our tiered structure. Higher sales volume means higher commission rates.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-graduation-cap feature-icon"></i>
+                    <h4>Comprehensive Training</h4>
+                    <p>Get full product training, sales materials, and marketing resources to help you succeed.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h4>Dedicated Support</h4>
+                    <p>Access to dedicated account managers and technical support to help close deals and support customers.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h4>Recurring Revenue</h4>
+                    <p>Build a sustainable business with monthly recurring commissions from customer subscriptions.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-map-marked-alt feature-icon"></i>
+                    <h4>Territory Protection</h4>
+                    <p>Get exclusive rights to your geographic territory to maximize your sales potential.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-tools feature-icon"></i>
+                    <h4>Sales & Marketing Tools</h4>
+                    <p>Access to demo accounts, presentation materials, case studies, and co-marketing opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Commission Structure -->
+<section class="container mb-5" id="commission">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Tiered Commission Structure</h2>
+            <p class="lead">Earn more as you sell more with our progressive commission model</p>
+        </div>
+    </div>
+
+    <!-- Commission Tiers -->
+    <div class="row mb-5">
+        <!-- Bronze Tier -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card commission-card h-100">
+                <div class="card-header bg-light">
+                    <h3 class="tier-name text-dark">Bronze Tier</h3>
+                    <p class="text-muted">For new resellers</p>
+                    <div class="commission-rate">
+                        15%
+                    </div>
+                    <div class="text-muted">Commission Rate</div>
+                </div>
+                <div class="card-body">
+                    <ul class="benefits-list">
+                        <li class="included"><i class="fas fa-check"></i> Up to TZS 5M monthly sales</li>
+                        <li class="included"><i class="fas fa-check"></i> Basic training & materials</li>
+                        <li class="included"><i class="fas fa-check"></i> Email support</li>
+                        <li class="included"><i class="fas fa-check"></i> Access to demo account</li>
+                        <li class="included"><i class="fas fa-check"></i> Standard marketing materials</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Dedicated account manager</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Co-marketing funds</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Priority technical support</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-outline-primary btn-reseller w-100">Start at Bronze</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Silver Tier -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card commission-card h-100 border-primary">
+                <div class="card-header bg-primary text-white position-relative">
+                    <span class="badge-popular position-absolute top-0 start-50 translate-middle">MOST POPULAR</span>
+                    <h3 class="tier-name">Silver Tier</h3>
+                    <p>For established resellers</p>
+                    <div class="commission-rate">
+                        20%
+                    </div>
+                    <div>Commission Rate</div>
+                </div>
+                <div class="card-body">
+                    <ul class="benefits-list">
+                        <li class="included"><i class="fas fa-check"></i> TZS 5M - 15M monthly sales</li>
+                        <li class="included"><i class="fas fa-check"></i> Advanced training</li>
+                        <li class="included"><i class="fas fa-check"></i> Phone & email support</li>
+                        <li class="included"><i class="fas fa-check"></i> Multiple demo accounts</li>
+                        <li class="included"><i class="fas fa-check"></i> Enhanced marketing materials</li>
+                        <li class="included"><i class="fas fa-check"></i> Dedicated account manager</li>
+                        <li class="included"><i class="fas fa-check"></i> Co-marketing funds (5%)</li>
+                        <li class="not-included"><i class="fas fa-times"></i> Priority technical support</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-primary btn-reseller w-100">Upgrade to Silver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gold Tier -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card commission-card h-100">
+                <div class="card-header bg-warning">
+                    <h3 class="tier-name">Gold Tier</h3>
+                    <p>For top-performing resellers</p>
+                    <div class="commission-rate">
+                        25% - 30%
+                    </div>
+                    <div>Commission Rate</div>
+                </div>
+                <div class="card-body">
+                    <ul class="benefits-list">
+                        <li class="included"><i class="fas fa-check"></i> TZS 15M+ monthly sales</li>
+                        <li class="included"><i class="fas fa-check"></i> Premium training & certification</li>
+                        <li class="included"><i class="fas fa-check"></i> 24/7 priority support</li>
+                        <li class="included"><i class="fas fa-check"></i> Unlimited demo accounts</li>
+                        <li class="included"><i class="fas fa-check"></i> Custom marketing materials</li>
+                        <li class="included"><i class="fas fa-check"></i> Senior account manager</li>
+                        <li class="included"><i class="fas fa-check"></i> Co-marketing funds (10%)</li>
+                        <li class="included"><i class="fas fa-check"></i> Invitation to annual partner conference</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <button class="btn btn-warning btn-reseller w-100">Reach Gold Tier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commission Structure Table -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Detailed Commission Breakdown</h3>
+            <div class="commission-structure">
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-center">Bronze (15%)</th>
+                        <th class="text-center">Silver (20%)</th>
+                        <th class="text-center">Gold (25-30%)</th>
+                        <th class="text-center">Additional Bonuses</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Starter Plan (TZS 50K/month)</td>
+                        <td class="text-center">TZS 7,500/month</td>
+                        <td class="text-center">TZS 10,000/month</td>
+                        <td class="text-center">TZS 12,500-15,000/month</td>
+                        <td class="text-center">TZS 10,000 onboarding bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Growth Plan (TZS 70K/month)</td>
+                        <td class="text-center">TZS 10,500/month</td>
+                        <td class="text-center">TZS 14,000/month</td>
+                        <td class="text-center">TZS 17,500-21,000/month</td>
+                        <td class="text-center">TZS 15,000 onboarding bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Basic Plan (TZS 150K/month)</td>
+                        <td class="text-center">TZS 22,500/month</td>
+                        <td class="text-center">TZS 30,000/month</td>
+                        <td class="text-center">TZS 37,500-45,000/month</td>
+                        <td class="text-center">TZS 25,000 onboarding bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Standard Plan (TZS 350K/month)</td>
+                        <td class="text-center">TZS 52,500/month</td>
+                        <td class="text-center">TZS 70,000/month</td>
+                        <td class="text-center">TZS 87,500-105,000/month</td>
+                        <td class="text-center">TZS 50,000 onboarding bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Premium Plan (TZS 650K/month)</td>
+                        <td class="text-center">TZS 97,500/month</td>
+                        <td class="text-center">TZS 130,000/month</td>
+                        <td class="text-center">TZS 162,500-195,000/month</td>
+                        <td class="text-center">TZS 75,000 onboarding bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Prepayments</td>
+                        <td class="text-center">+2% bonus</td>
+                        <td class="text-center">+3% bonus</td>
+                        <td class="text-center">+5% bonus</td>
+                        <td class="text-center">Paid upfront</td>
+                    </tr>
+                    <tr>
+                        <td>Additional Services</td>
+                        <td class="text-center">15%</td>
+                        <td class="text-center">20%</td>
+                        <td class="text-center">25%</td>
+                        <td class="text-center">One-time payment</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Earnings Calculator -->
+<section class="container mb-5" id="calculator">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Reseller Earnings Calculator</h2>
+            <p class="lead">Estimate your potential monthly and annual earnings</p>
+        </div>
+    </div>
+
+    <div class="calculator-container">
+        <div class="row">
+            <div class="col-lg-6">
+                <form id="earningsCalculator">
+                    <div class="mb-3">
+                        <label for="tier" class="form-label">Reseller Tier</label>
+                        <select class="form-select" id="tier" required>
+                            <option value="0.15">Bronze (15%)</option>
+                            <option value="0.20" selected>Silver (20%)</option>
+                            <option value="0.25">Gold (25%)</option>
+                            <option value="0.30">Gold Elite (30%)</option>
+                        </select>
+                    </div>
+
+                    <h5 class="mt-4 mb-3">Number of Customers</h5>
+
+                    <div class="mb-3">
+                        <label for="starterCustomers" class="form-label">Starter Plan (TZS 50K/month)</label>
+                        <input type="number" class="form-control" id="starterCustomers" value="5" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="growthCustomers" class="form-label">Growth Plan (TZS 70K/month)</label>
+                        <input type="number" class="form-control" id="growthCustomers" value="3" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="basicCustomers" class="form-label">Basic Plan (TZS 150K/month)</label>
+                        <input type="number" class="form-control" id="basicCustomers" value="2" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="standardCustomers" class="form-label">Standard Plan (TZS 350K/month)</label>
+                        <input type="number" class="form-control" id="standardCustomers" value="1" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="premiumCustomers" class="form-label">Premium Plan (TZS 650K/month)</label>
+                        <input type="number" class="form-control" id="premiumCustomers" value="0" min="0">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="annualPrepay">
+                        <label class="form-check-label" for="annualPrepay">Include annual prepayment bonus</label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h4 class="mb-0">Your Earnings Estimate</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Monthly Commission:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span id="monthlyCommission">TZS 0</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Annual Commission:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span id="annualCommission">TZS 0</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Onboarding Bonuses:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span id="onboardingBonus">TZS 0</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Total First Year:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span id="firstYearTotal">TZS 0</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Recurring Annual (Year 2+):</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span id="recurringAnnual">TZS 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories -->
+<section class="container mb-5" id="testimonials">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Reseller Success Stories</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"I started as a Bronze reseller and within 6 months reached Gold tier. SAMI's recurring commission model has provided a stable income for my business."</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Reseller">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">James Mfinanga</h6>
+                        <small class="text-muted">Gold Reseller, Dar es Salaam</small>
+                        <div class="small text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"The training and support from SAMI helped me understand the product deeply. I've onboarded 15 schools in Mwanza region in just one year."</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Reseller">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">Grace John</h6>
+                        <small class="text-muted">Silver Reseller, Mwanza</small>
+                        <div class="small text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <p>"The commission structure is transparent and payments are always on time. I appreciate the co-marketing support that helps me reach more schools."</p>
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Reseller">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">Robert Kaaya</h6>
+                        <small class="text-muted">Gold Reseller, Arusha</small>
+                        <div class="small text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Start Earning as a SAMI Reseller?</h2>
+        <p class="lead mb-4">Join our network of successful resellers across Tanzania</p>
+        <a href="#apply" class="btn btn-light btn-lg me-3">Apply Now</a>
+        <a href="#" class="btn btn-outline-light btn-lg">Download Reseller Kit</a>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="container mb-5" id="faq">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Reseller Program FAQ</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            How often are commissions paid?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Commissions are paid monthly, around the 15th of each month for the previous month's sales. Annual prepayment bonuses are paid within 30 days of the customer's payment.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            Is there a minimum sales requirement?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            There's no minimum sales requirement to join the program. However, to maintain Silver tier status, you need to maintain at least TZS 5M in monthly sales, and for Gold tier, TZS 15M in monthly sales.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            What support do you provide to resellers?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We provide comprehensive support including product training, sales materials, demo accounts, marketing collateral, and dedicated account managers for Silver and Gold tier resellers. We also offer co-marketing funds for qualified partners.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                            Can I resell in any region of Tanzania?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, you can resell across Tanzania. We offer territory protection for established resellers to ensure you have exclusive rights to your designated regions as you grow your business.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Section -->
+<section class="container mb-5" id="apply">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="section-title">Apply to Become a Reseller</h2>
+            <p class="lead">Start your journey to becoming a SAMI reseller today</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="reseller-benefits">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="applyName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="applyName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="applyEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="applyEmail" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="applyPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="applyPhone" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="applyCompany" class="form-label">Company Name (if applicable)</label>
+                            <input type="text" class="form-control" id="applyCompany">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="applyLocation" class="form-label">Primary Region/Location</label>
+                        <input type="text" class="form-control" id="applyLocation" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="applyExperience" class="form-label">Previous Sales/Reseller Experience</label>
+                        <textarea class="form-control" id="applyExperience" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="applyInterest" class="form-label">Why are you interested in becoming a SAMI reseller?</label>
+                        <textarea class="form-control" id="applyInterest" rows="3" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5>SAMI Reseller Program</h5>
+                <p>Join our network and earn generous commissions by helping schools transform with SAMI v4.0.</p>
+                <div class="d-flex">
+                    <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#benefits" class="text-light text-decoration-none">Benefits</a></li>
+                    <li><a href="#commission" class="text-light text-decoration-none">Commission</a></li>
+                    <li><a href="#calculator" class="text-light text-decoration-none">Calculator</a></li>
+                    <li><a href="#faq" class="text-light text-decoration-none">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Contact Info</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Dar es Salaam, Tanzania</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2"></i> +255 123 456 789</li>
+                    <li class="mb-2"><i class="fas fa-envelope me-2"></i> partners@sami.co.tz</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <h5>Reseller Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-light text-decoration-none">Reseller Portal Login</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Download Marketing Kit</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Product Documentation</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Training Calendar</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-0">© 2023 SAMI Reseller Program. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-light text-decoration-none me-3">Privacy Policy</a>
+                <a href="#" class="text-light text-decoration-none">Reseller Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Earnings Calculator
+    document.addEventListener('DOMContentLoaded', function() {
+        const calculatorForm = document.getElementById('earningsCalculator');
+        const inputs = calculatorForm.querySelectorAll('input, select');
+
+        // Initialize chart
+        const earningsCtx = document.getElementById('earningsChart').getContext('2d');
+        const earningsChart = new Chart(earningsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Starter', 'Growth', 'Basic', 'Standard', 'Premium'],
+                datasets: [{
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Commission Distribution by Plan'
+                    }
+                }
+            }
+        });
+
+        // Calculate function
+        function calculateEarnings() {
+            const tier = parseFloat(document.getElementById('tier').value);
+            const starterCustomers = parseInt(document.getElementById('starterCustomers').value) || 0;
+            const growthCustomers = parseInt(document.getElementById('growthCustomers').value) || 0;
+            const basicCustomers = parseInt(document.getElementById('basicCustomers').value) || 0;
+            const standardCustomers = parseInt(document.getElementById('standardCustomers').value) || 0;
+            const premiumCustomers = parseInt(document.getElementById('premiumCustomers').value) || 0;
+            const annualPrepay = document.getElementById('annualPrepay').checked;
+
+            // Plan prices
+            const starterPrice = 50000;
+            const growthPrice = 70000;
+            const basicPrice = 150000;
+            const standardPrice = 350000;
+            const premiumPrice = 650000;
+
+            // Onboarding bonuses
+            const starterBonus = 10000;
+            const growthBonus = 15000;
+            const basicBonus = 25000;
+            const standardBonus = 50000;
+            const premiumBonus = 75000;
+
+            // Calculate monthly commission
+            const starterMonthly = starterCustomers * starterPrice * tier;
+            const growthMonthly = growthCustomers * growthPrice * tier;
+            const basicMonthly = basicCustomers * basicPrice * tier;
+            const standardMonthly = standardCustomers * standardPrice * tier;
+            const premiumMonthly = premiumCustomers * premiumPrice * tier;
+
+            const monthlyCommission = starterMonthly + growthMonthly + basicMonthly + standardMonthly + premiumMonthly;
+
+            // Calculate annual commission
+            let annualCommission = monthlyCommission * 12;
+            if (annualPrepay) {
+                // Add bonus for annual prepayments
+                let annualBonus = 0;
+                if (tier === 0.15) annualBonus = 0.02;
+                else if (tier === 0.20) annualBonus = 0.03;
+                else annualBonus = 0.05;
+
+                annualCommission *= (1 + annualBonus);
+            }
+
+            // Calculate onboarding bonuses
+            const onboardingBonus = (starterCustomers * starterBonus) +
+                (growthCustomers * growthBonus) +
+                (basicCustomers * basicBonus) +
+                (standardCustomers * standardBonus) +
+                (premiumCustomers * premiumBonus);
+
+            // Update display
+            document.getElementById('monthlyCommission').textContent = formatCurrency(monthlyCommission);
+            document.getElementById('annualCommission').textContent = formatCurrency(annualCommission);
+            document.getElementById('onboardingBonus').textContent = formatCurrency(onboardingBonus);
+            document.getElementById('firstYearTotal').textContent = formatCurrency(annualCommission + onboardingBonus);
+            document.getElementById('recurringAnnual').textContent = formatCurrency(annualCommission);
+
+            // Update chart
+            earningsChart.data.datasets[0].data = [
+                starterMonthly,
+                growthMonthly,
+                basicMonthly,
+                standardMonthly,
+                premiumMonthly
+            ];
+            earningsChart.update();
+        }
+
+        function formatCurrency(amount) {
+            return 'TZS ' + amount.toLocaleString('en-TZ', {maximumFractionDigits: 0});
+        }
+
+        // Add event listeners
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateEarnings);
+            input.addEventListener('change', calculateEarnings);
+        });
+
+        // Initial calculation
+        calculateEarnings();
+    });
+</script>
+</body>
+</html>

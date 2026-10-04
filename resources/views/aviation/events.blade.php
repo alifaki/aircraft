@@ -1,0 +1,6 @@
+@extends('layouts.aviation')
+@section('title','Safety events')
+@section('content')
+<div class="page-heading"><div><div class="eyebrow">Operations assurance</div><h1>Safety events</h1><p>Recorded deviations and changes affecting scheduled duties or flights. Actual operation data remains available for investigation.</p></div></div>
+<div class="av-card"><div class="av-card-head"><h2>Event log</h2><span class="av-sub">{{ $events->total() }} events</span></div><div class="px-3 py-2"><button type="button" class="av-btn av-btn-outline" data-refresh-table>Refresh table</button></div><div class="table-responsive"><table class="table av-table"><thead><tr><th>Recorded UTC</th><th>Type</th><th>Duty</th><th>Flight</th><th>Details</th></tr></thead><tbody>@forelse($events as $event)<tr><td>{{ $event->created_at->format('d M Y H:i') }}</td><td><span class="av-badge grounded">{{ str_replace('_',' ',ucwords($event->event_type,'_')) }}</span></td><td>{{ $event->duty?->reference ?? '—' }}</td><td>{{ $event->flight?->flight_number ?? '—' }}</td><td><ul class="av-list">@foreach($event->issues as $issue)<li>{{ $issue }}</li>@endforeach</ul></td></tr>@empty<tr><td colspan="5" class="av-empty">No safety events have been recorded.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{ $events->links('pagination::bootstrap-5') }}</div></div>
+@endsection
